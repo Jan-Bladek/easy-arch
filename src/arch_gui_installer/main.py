@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import resource
 import signal
 import sys
@@ -52,6 +53,9 @@ def main() -> int:
         control_channel = None
         try:
             plan = Plan(**json.loads(args.apply.read_text()))
+            # The privileged worker must not keep the destination busy through
+            # an inherited current directory (including its own parent process).
+            os.chdir("/")
             if plan.schema != 1 or plan.digest() != args.approval:
                 raise ValueError("Unapproved plan/schema")
             config = Config.from_dict(plan.config)

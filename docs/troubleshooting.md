@@ -12,3 +12,19 @@ The GUI's installation page shows JSON events and command output. Save it using 
 - **Boot failure**: use another Arch live ISO, identify devices with `lsblk -f`, unlock LUKS where needed, mount root/subvolumes and ESP, inspect fstab, boot entry UUIDs and initramfs. Keep the failed disk snapshot for diagnosis. The installer does not claim to recover arbitrary partial installations automatically.
 
 Never post Wi-Fi keyfiles, shadow files, passwords or complete core dumps in bug reports. Include the credential-free plan, relevant journal entries and reproducible VM settings.
+
+## Final unmount reports “target is busy”
+
+If verification completed and only stage 9 fails, the installed files/boot artifacts have passed static checks, but cleanup has not completed. Do not rerun the installation or format again. Save the live journal. A busy filesystem can have a process using a file/current directory, an active swapfile or remaining mounts. Inspect:
+
+```sh
+sudo findmnt -R /mnt/easy-arch-target
+sudo fuser -vm /mnt/easy-arch-target
+sudo swapon --show=NAME,TYPE
+```
+
+Close the identified program normally; leave shells/chroots using the target (`cd /` in the live shell). After the blocker has released it, `sudo umount -R /mnt/easy-arch-target` can finish cleanup. If it still fails, retain the log for diagnosis. Do not use `fuser -k`, forced or lazy unmount as a blanket workaround. Encryption mappings must only be closed after all target mounts are gone.
+
+The updated source reports this state separately and collects read-only mount/process/swap diagnostics. It keeps reboot disabled while cleanup failed and does not claim installation completion. Both the worker and child commands use `/` as their working directory. The existing alpha.1 release ISO predates this change.
+
+One reported alpha.1 installation subsequently booted after the user powered off and removed the ISO. The holder was not captured, so its cause remains unknown; that report does not establish that forced shutdown is a safe general recovery procedure.

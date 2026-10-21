@@ -1,0 +1,91 @@
+{
+  "busy_mount_detected": true,
+  "holder_reported": true,
+  "holder_not_killed_by_installer": true,
+  "normal_unmount_after_holder_exit": true,
+  "scope": "Controlled tmpfs/CWD holder in disposable QEMU; not a diagnosis of the reported user installation",
+  "events": [
+    {
+      "time": "2026-10-21T19:37:01.466775+00:00",
+      "event": "command",
+      "argv": [
+        "umount",
+        "--recursive",
+        "/tmp/easy-arch-busy-test-mny_3xvp"
+      ]
+    },
+    {
+      "time": "2026-10-21T19:37:01.483443+00:00",
+      "event": "output",
+      "text": "umount: "
+    },
+    {
+      "time": "2026-10-21T19:37:01.485211+00:00",
+      "event": "output",
+      "text": "/tmp/easy-arch-busy-test-mny_3xvp: target is busy.\n"
+    },
+    {
+      "time": "2026-10-21T19:37:01.490471+00:00",
+      "event": "command",
+      "argv": [
+        "findmnt",
+        "--submounts",
+        "--mountpoint",
+        "/tmp/easy-arch-busy-test-mny_3xvp",
+        "--output",
+        "TARGET,SOURCE,FSTYPE"
+      ]
+    },
+    {
+      "time": "2026-10-21T19:37:01.509110+00:00",
+      "event": "output",
+      "text": "TARGET                            SOURCE FSTYPE\n/tmp/easy-arch-busy-test-mny_3xvp tmpfs  tmpfs\n"
+    },
+    {
+      "time": "2026-10-21T19:37:01.511394+00:00",
+      "event": "command",
+      "argv": [
+        "fuser",
+        "-vm",
+        "/tmp/easy-arch-busy-test-mny_3xvp"
+      ]
+    },
+    {
+      "time": "2026-10-21T19:37:01.598410+00:00",
+      "event": "output",
+      "text": "                     USER        PID ACCESS COMMAND\n/tmp/easy-arch-busy-test-mny_3xvp:"
+    },
+    {
+      "time": "2026-10-21T19:37:01.598762+00:00",
+      "event": "output",
+      "text": "\n                     root     kernel mount /tmp/easy-arch-busy-test-mny_3xvp\n                     root     "
+    },
+    {
+      "time": "2026-10-21T19:37:01.599169+00:00",
+      "event": "output",
+      "text": "   513 ..c.. sleep\n"
+    },
+    {
+      "time": "2026-10-21T19:37:01.601630+00:00",
+      "event": "command",
+      "argv": [
+        "swapon",
+        "--show=NAME,TYPE"
+      ]
+    },
+    {
+      "time": "2026-10-21T19:37:01.615312+00:00",
+      "event": "output",
+      "text": "NAME           TYPE\n/swap/swapfile file\n"
+    },
+    {
+      "time": "2026-10-21T19:37:01.619565+00:00",
+      "event": "command",
+      "argv": [
+        "umount",
+        "--recursive",
+        "/tmp/easy-arch-busy-test-mny_3xvp"
+      ]
+    }
+  ]
+}

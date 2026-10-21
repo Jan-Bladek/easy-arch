@@ -187,6 +187,7 @@ class Wizard(QMainWindow):
         self.buffer = b""
         self.temp = None
         self.succeeded = False
+        self.finalization_required = False
         QApplication.instance().aboutToQuit.connect(self.shutdown_tasks)
         self.setWindowTitle("Easy Arch • Arch Linux Installer")
         self.resize(1180, 800)
@@ -1101,6 +1102,8 @@ class Wizard(QMainWindow):
                 )
             if event.get("event") == "complete":
                 self.succeeded = True
+            if event.get("event") == "finalization_required":
+                self.finalization_required = bool(event.get("system_verified"))
             self.logs.appendPlainText(
                 event.get("text", json.dumps(event, ensure_ascii=False))
             )
@@ -1109,7 +1112,9 @@ class Wizard(QMainWindow):
         self.process_output()
         success = code == 0 and self.succeeded
         self.status.setText(
-            "Completed / Zakończono"
+            "System verified; unmount blocked. See diagnostics. / System zweryfikowany; odmontowanie zablokowane. Sprawdź diagnostykę."
+            if self.finalization_required and not success
+            else "Completed / Zakończono"
             if success
             else "Failed or cancelled. Review logs. / Błąd lub anulowano. Sprawdź logi."
         )

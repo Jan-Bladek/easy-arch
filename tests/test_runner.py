@@ -45,6 +45,12 @@ def test_cancel_blocks_next_command():
     runner.run(["/usr/bin/true"], cleanup=True)
 
 
+def test_commands_do_not_inherit_a_target_working_directory(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    runner = Runner(lambda e: None)
+    assert runner.run(["/usr/bin/pwd"], capture=True).strip() == "/"
+
+
 def test_timeout():
     runner = Runner(lambda e: None)
     with pytest.raises(TimeoutError):

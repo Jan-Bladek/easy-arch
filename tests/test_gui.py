@@ -53,3 +53,16 @@ def test_preview_never_starts_privileged_process(monkeypatch):
     assert "DRY RUN" in w.logs.toPlainText()
     w.close()
     app.processEvents()
+
+
+def test_verified_system_with_unmount_failure_is_not_reported_as_complete(monkeypatch):
+    app = QApplication.instance() or QApplication([])
+    monkeypatch.setattr(Wizard, "scan", lambda self: None)
+    monkeypatch.setattr(Wizard, "process_output", lambda self: None)
+    w = Wizard(True)
+    w.finalization_required = True
+    w.process_finished(1, None)
+    assert "System zweryfikowany" in w.status.text()
+    assert not w.reboot.isEnabled()
+    w.close()
+    app.processEvents()

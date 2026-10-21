@@ -14,6 +14,7 @@ from pathlib import Path
 from arch_gui_installer.core.config import Config, Partition, Secrets, ValidationError
 from arch_gui_installer.hardware.detect import check_identity, hardware
 from arch_gui_installer.installation.runner import Runner
+from arch_gui_installer.installation.unmount import UnmountError, unmount
 from arch_gui_installer.packages.catalog import Catalog
 from arch_gui_installer.storage.fstab import without_live_swap
 from arch_gui_installer.storage.plan import BIOS, ESP, LINUX, SWAP, Plan, partition_path
@@ -51,6 +52,7 @@ class Engine:
         self.work = None
         self.pacman_config = None
         self.db = None
+        self.verified = False
 
     def chroot(self, *args: str, **kw) -> str:
         return self.r.run(["arch-chroot", str(self.target), *args], **kw)
@@ -831,6 +833,7 @@ class Engine:
             checks="files, kernels, initramfs, packages, user, fstab, enabled services",
             reboot_tested=False,
         )
+        self.verified = True
 
     def finish(self):
         if self.r.journal_path:
@@ -845,7 +848,16 @@ class Engine:
                 0o600,
             )
         self.r.run(["sync"])
-        self.r.run(["umount", "--recursive", str(self.target)])
+        try:
+            unmount(self.r, self.target)
+        except UnmountError:
+            self.r.event(
+                "finalization_required",
+                system_verified=self.verified,
+                target=str(self.target),
+                message="Unmount failed. Inspect diagnostics; do not reinstall or format again.",
+            )
+            raise
         self.mounted = False
         if self.mapper_open:
             self.r.run(["cryptsetup", "close", self.mapper])
@@ -855,7 +867,7 @@ class Engine:
         # No automatic retries of partitioning/formatting. Retain logs and report leaks.
         if self.mounted:
             try:
-                self.r.run(["umount", "--recursive", str(self.target)], cleanup=True)
+                unmount(self.r, self.target, cleanup=True)
                 self.mounted = False
             except Exception as exc:
                 self.r.event("cleanup_error", message=str(exc))

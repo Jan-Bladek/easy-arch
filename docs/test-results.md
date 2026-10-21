@@ -4,7 +4,7 @@ Executed on **2026-10-21**, using real Arch repository packages. These results q
 
 | Check | Result | Evidence |
 |---|---|---|
-| Python unit/integration suite | PASS: 54 tests | `QT_QPA_PLATFORM=offscreen .venv/bin/python -m pytest -q` |
+| Python unit/integration suite | PASS: 59 tests (current source; alpha.1 had 54) | `QT_QPA_PLATFORM=offscreen .venv/bin/python -m pytest -q` |
 | GitHub Actions | PASS on initial implementation commit | [Executed CI run](https://github.com/Jan-Bladek/easy-arch/actions/runs/39657931615) |
 | Static checks / wheel | PASS | Ruff E4/E7/E9/F/I; compileall; bash syntax; wheel build |
 | Qt dark/light, PL/EN, event-loop shutdown | PASS | Offscreen Qt 6.12; GUI screenshot in assets |
@@ -24,6 +24,7 @@ Executed on **2026-10-21**, using real Arch repository packages. These results q
 | Insufficient target capacity | PASS: rejected before disk writes | Same VM fault report; real package metadata and unchanged partition table |
 | GUI → Polkit helper → root backend | PASS: typed serial, credential pipe, visible capacity failure, disk still blank | [Actual stage/error and lsblk](evidence/gui-helper-capacity.json); initial live image with session/mode fixes applied in RAM |
 | Live ISO build and fresh UEFI boot | PASS: automatic live login and installer startup, disk/catalog detection | [Image checksum and exact scope](evidence/iso-verification.json), [screenshot](../assets/live-iso.png) |
+| Busy final unmount diagnostics | PASS: real busy tmpfs mount, holder PID reported, holder left running; normal unmount after holder exits | [QEMU evidence](evidence/busy-unmount.json); controlled reproduction, original user blocker unknown; source update after alpha.1 |
 | Physical installation, Wi-Fi/Bluetooth, microphones, NVIDIA, HiDPI/multi-monitor | NOT EXECUTED | No pass is claimed |
 | XFS, PBKDF2, other kernels, BIOS encryption, UEFI GRUB, Secure Boot | NOT QUALIFIED by these VM runs | Some paths implemented; Secure Boot explicitly blocked |
 

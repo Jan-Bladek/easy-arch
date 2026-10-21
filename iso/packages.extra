@@ -27,3 +27,4 @@ curl
 gptfdisk
 parted
 python-pyxdg
+psmisc

@@ -73,6 +73,7 @@ class Runner:
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             start_new_session=True,
+            cwd="/",
             env={"PATH": "/usr/bin:/bin", "LC_ALL": "C", "HOME": "/root"},
         )
         # Secret payloads are deliberately small (passwords/key material); never emit them.
