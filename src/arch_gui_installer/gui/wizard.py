@@ -5,6 +5,7 @@ import os
 import sys
 import tempfile
 from dataclasses import asdict
+from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 
 from PySide6.QtCore import QProcess, Qt, QThread, QTimer, Signal
@@ -189,7 +190,11 @@ class Wizard(QMainWindow):
         self.succeeded = False
         self.finalization_required = False
         QApplication.instance().aboutToQuit.connect(self.shutdown_tasks)
-        self.setWindowTitle("Easy Arch • Arch Linux Installer")
+        try:
+            app_version = version("easy-arch")
+        except PackageNotFoundError:
+            app_version = "source"
+        self.setWindowTitle(f"Easy Arch {app_version} • Arch Linux Installer")
         self.resize(1180, 800)
         self.setMinimumSize(760, 540)
         self.root = QWidget()

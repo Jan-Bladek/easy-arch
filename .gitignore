@@ -10,6 +10,7 @@ iso/work/
 iso/out/
 iso/profile/
 iso/catalog-build.*/
+iso/build.*/
 *.qcow2
 *.iso
 *.log
