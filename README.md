@@ -2,7 +2,7 @@
 
 A real Python/Qt6 installer backend and desktop wizard for Arch Linux x86_64. This is **pre-release software**. See [executed test results](docs/test-results.md) before using it. Four real VM installation scenarios have passed boot and graphical login checks: UEFI/KDE/ext4, manual Btrfs/Hyprland/Noctalia with preserved ESP/data, BIOS/GRUB/KDE, and UEFI/LUKS2/KDE. Physical hardware qualification is still pending.
 
-![Easy Arch GUI](assets/gui-preview.png)
+![Easy Arch running automatically from the built live ISO](assets/live-iso.png)
 
 The wizard provides Polish/English interface text, dark/light themes, hardware detection, automatic GPT partitioning, a manual partition editor, official repository package search/groups, KDE Plasma or Hyprland + Noctalia, account configuration, services, an explicit operation plan and streamed installation logs. Installation uses `pacstrap`, `arch-chroot`, `pacman`, `sfdisk`, `cryptsetup`, `mkinitcpio` and the selected bootloader. There are no simulated install commands in the backend.
 

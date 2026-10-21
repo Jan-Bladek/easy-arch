@@ -1,0 +1,32 @@
+{
+  "tested_at_utc": "2026-10-21T19:06:10.028641+00:00",
+  "image": "easy-arch-2026.10.21-x86_64.iso",
+  "bytes": 2009104384,
+  "sha256": "88e0fe71cc0b4d6fd6634a004e014da570f623ad73bac9dde9b952af3b439981",
+  "checksum_matches_disposable_builder": true,
+  "archiso": "91-1",
+  "qemu": "11.1.2",
+  "application_source_commit": "cc1ae68",
+  "build_method": "Official releng profile, project overlay, iterative mkarchiso rebuilds inside a disposable Arch VM",
+  "boot": {
+    "result": "PASS",
+    "firmware": "OVMF UEFI, Secure Boot disabled",
+    "machine": "q35 / TCG / cpu max / 2 vCPUs / 6 GiB RAM",
+    "target": "Separate empty 20 GiB qcow2, serial EASYARCH-ISO-FINAL",
+    "automatic_live_login": true,
+    "automatic_gui_start": true,
+    "terminal_commands_needed_for_gui_start": false,
+    "manual_live_fixes_on_tested_boot": false,
+    "detected_disks": 1,
+    "displayed_official_packages": 15339,
+    "screenshot": "assets/live-iso.png"
+  },
+  "image_inspection": {
+    "installer_entry_mode": "0755, checked in the final SquashFS",
+    "session_wrapper": "/etc/lightdm/Xsession",
+    "boot_parameter": "cow_spacesize=75%",
+    "bundled_catalog_snapshot_utc": "2026-10-21T17:56:05.823428+00:00"
+  },
+  "scope": "Live boot/autostart/hardware/catalog smoke check only. Full installation cases ran separately through the actual backend; the GUI/helper capacity fault used the earlier live image with session/mode corrections in RAM.",
+  "artifact_note": "Generated ISO is excluded from Git; local artifact and SHA256SUMS are in iso/out. The package/version manifest is committed separately. Iterative image retained official core/extra sync DBs, preferred by Catalog over the bundled core/extra/multilib snapshot."
+}
