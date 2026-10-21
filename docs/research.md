@@ -1,0 +1,15 @@
+# Technical research — 2026-10-21
+
+Primary sources inspected before implementation:
+
+- [archinstall Installer source](https://github.com/archlinux/archinstall/blob/master/archinstall/lib/installer.py): `Installer(target, disk_config, base_packages, kernels, firmware, silent)` offers `mount_ordered_layout`, `minimal_installation`, `mkinitcpio`, bootloader setup, account and system helpers. Its implementation imports `archinstall.lib.models.device`, `DiskEncryption`, `Luks2`, the pacman abstraction, storage models and global logging/plugin machinery. These methods are usable with a version-pinned adapter; they are not a storage-neutral stable backend protocol. Directly binding the GUI to them would expose upstream model changes throughout the application. The current implementation therefore reuses the official **command-line tools** that archinstall itself orchestrates. No undocumented Python interface is used, no archinstall dependency is claimed. A future pinned adapter should satisfy the same Plan/Runner interface and test matrix.
+- [pacstrap(8)](https://man.archlinux.org/man/pacstrap.8.en): official root installation tool, `-K` initializes target keyring; `-C` selects repository configuration.
+- [mkarchiso(1)](https://man.archlinux.org/man/mkarchiso.1.en): use the packaged `releng` profile and reproducible build instructions, never an unrelated remaster tool.
+- [Noctalia installation](https://docs.noctalia.dev/noctalia/getting-started/installation/) and [running](https://docs.noctalia.dev/noctalia/getting-started/running-the-shell/): current Noctalia 5 is `noctalia` in Extra and launched by the compositor as `noctalia`. Legacy v4/Quickshell configuration is incompatible and is not shipped.
+- [Arch Noctalia package](https://archlinux.org/packages/extra/x86_64/noctalia/): version 5.3.0-1, official dependencies checked against the local official sync DB.
+- [upstream Hyprland example](https://github.com/hyprwm/Hyprland/blob/main/example/hyprland.lua): current Lua `hl.monitor`, `hl.config`, `hl.bind`, `hl.on`, `hl.dsp` API. Local official package inspected: 0.56.2-4. The installer checks the version family again after live repository synchronization and fails before disk writes if incompatible.
+- [Arch cloud images](https://geo.mirror.pkgbuild.com/images/latest/): an official cloud image is the disposable test harness, with a separate blank serial-tagged target disk. The harness is not presented as the final installer ISO.
+
+ArchWiki Installation guide and dm-crypt pages returned an access-denied challenge from this environment. No claims are based on unread page content. Installed manual pages, upstream code and actual VM execution are used instead.
+
+Package existence is verified using only core/extra/multilib DB archives, without including host distribution overlay repositories. Actual installation synchronizes isolated DBs and asks pacman to prepare/download the complete transaction in an empty root before partitioning. All dependencies and package replacement choices remain pacman's responsibility.

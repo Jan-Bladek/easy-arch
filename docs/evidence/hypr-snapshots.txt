@@ -1,0 +1,10 @@
+<redacted>
+Config | Subvolume
+-------+----------
+root   | /
+2
+# | Type   | Pre # | Date                     | User | Cleanup  | Description       | Userdata
+--+--------+-------+--------------------------+------+----------+-------------------+---------
+0 | single |       |                          | root |          | current           |
+1 | single |       | Wed Oct 21 20:00:01 2026 | root | timeline | timeline          |
+2 | single |       | Wed Oct 21 20:05:47 2026 | root |          | easy-arch-vm-test |

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+  <menu id="root-menu" label="Easy Arch Live">
+    <item label="Easy Arch Installer"><action name="Execute"><command>easy-arch</command></action></item>
+    <item label="Network Connections"><action name="Execute"><command>nm-connection-editor</command></action></item>
+    <separator />
+    <item label="Reboot"><action name="Execute"><command>systemctl reboot</command></action></item>
+    <item label="Power Off"><action name="Execute"><command>systemctl poweroff</command></action></item>
+  </menu>
+</openbox_menu>

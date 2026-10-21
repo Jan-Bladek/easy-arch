@@ -1,0 +1,15 @@
+.venv/
+.vm/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+iso/work/
+iso/out/
+iso/profile/
+iso/catalog-build.*/
+*.qcow2
+*.iso
+*.log

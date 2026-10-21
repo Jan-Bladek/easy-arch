@@ -1,0 +1,6 @@
+# Noctalia 5.x uses its built-in polkit agent; no second agent is started.
+[shell]
+polkit_agent = true
+
+[notification]
+enable_daemon = true

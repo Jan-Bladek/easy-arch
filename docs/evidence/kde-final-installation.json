@@ -1,0 +1,166 @@
+[
+  {
+    "time": "2026-10-21T17:32:34.604482+00:00",
+    "event": "stage",
+    "index": 1,
+    "total": 9,
+    "name": "Preflight",
+    "status": "running"
+  },
+  {
+    "time": "2026-10-21T17:32:36.907234+00:00",
+    "event": "stage",
+    "index": 1,
+    "total": 9,
+    "name": "Preflight",
+    "status": "done",
+    "seconds": 2.269014698999854
+  },
+  {
+    "time": "2026-10-21T17:32:36.935365+00:00",
+    "event": "stage",
+    "index": 2,
+    "total": 9,
+    "name": "Repository and package transaction",
+    "status": "running"
+  },
+  {
+    "time": "2026-10-21T17:40:01.516526+00:00",
+    "event": "stage",
+    "index": 2,
+    "total": 9,
+    "name": "Repository and package transaction",
+    "status": "done",
+    "seconds": 444.55861566800013
+  },
+  {
+    "time": "2026-10-21T17:40:01.544607+00:00",
+    "event": "stage",
+    "index": 3,
+    "total": 9,
+    "name": "Partition and format",
+    "status": "running"
+  },
+  {
+    "time": "2026-10-21T17:40:04.502138+00:00",
+    "event": "stage",
+    "index": 3,
+    "total": 9,
+    "name": "Partition and format",
+    "status": "done",
+    "seconds": 2.932689703000051
+  },
+  {
+    "time": "2026-10-21T17:40:04.525462+00:00",
+    "event": "stage",
+    "index": 4,
+    "total": 9,
+    "name": "Mount filesystems",
+    "status": "running"
+  },
+  {
+    "time": "2026-10-21T17:40:05.078407+00:00",
+    "event": "stage",
+    "index": 4,
+    "total": 9,
+    "name": "Mount filesystems",
+    "status": "done",
+    "seconds": 0.5248719760002132
+  },
+  {
+    "time": "2026-10-21T17:40:05.098413+00:00",
+    "event": "stage",
+    "index": 5,
+    "total": 9,
+    "name": "Install Arch Linux packages",
+    "status": "running"
+  },
+  {
+    "time": "2026-10-21T17:59:44.470276+00:00",
+    "event": "stage",
+    "index": 5,
+    "total": 9,
+    "name": "Install Arch Linux packages",
+    "status": "done",
+    "seconds": 1179.347576657
+  },
+  {
+    "time": "2026-10-21T17:59:44.484224+00:00",
+    "event": "stage",
+    "index": 6,
+    "total": 9,
+    "name": "Configure system and desktop",
+    "status": "running"
+  },
+  {
+    "time": "2026-10-21T18:00:18.719684+00:00",
+    "event": "stage",
+    "index": 6,
+    "total": 9,
+    "name": "Configure system and desktop",
+    "status": "done",
+    "seconds": 34.217611205999674
+  },
+  {
+    "time": "2026-10-21T18:00:18.731236+00:00",
+    "event": "stage",
+    "index": 7,
+    "total": 9,
+    "name": "Initramfs and bootloader",
+    "status": "running"
+  },
+  {
+    "time": "2026-10-21T18:01:23.076253+00:00",
+    "event": "stage",
+    "index": 7,
+    "total": 9,
+    "name": "Initramfs and bootloader",
+    "status": "done",
+    "seconds": 64.33528555299927
+  },
+  {
+    "time": "2026-10-21T18:01:23.088295+00:00",
+    "event": "stage",
+    "index": 8,
+    "total": 9,
+    "name": "Verify installed system",
+    "status": "running"
+  },
+  {
+    "time": "2026-10-21T18:01:24.824618+00:00",
+    "event": "verified",
+    "checks": "files, kernels, initramfs, packages, user, fstab, enabled services",
+    "reboot_tested": false
+  },
+  {
+    "time": "2026-10-21T18:01:24.835871+00:00",
+    "event": "stage",
+    "index": 8,
+    "total": 9,
+    "name": "Verify installed system",
+    "status": "done",
+    "seconds": 1.7348250080003709
+  },
+  {
+    "time": "2026-10-21T18:01:24.845955+00:00",
+    "event": "stage",
+    "index": 9,
+    "total": 9,
+    "name": "Flush and unmount",
+    "status": "running"
+  },
+  {
+    "time": "2026-10-21T18:01:26.036841+00:00",
+    "event": "stage",
+    "index": 9,
+    "total": 9,
+    "name": "Flush and unmount",
+    "status": "done",
+    "seconds": 1.1804775860000518
+  },
+  {
+    "time": "2026-10-21T18:01:26.053364+00:00",
+    "event": "complete",
+    "message": "Installation completed; reboot and desktop still require a boot test"
+  }
+]

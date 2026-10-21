@@ -1,0 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+id live >/dev/null 2>&1 || useradd -m -G wheel -s /bin/bash live
+groupadd -f autologin
+usermod -aG autologin live
+passwd -d live
+install -d -m 0700 -o live -g live /home/live/.config

@@ -1,0 +1,5 @@
+{
+  "password_login": true,
+  "exit_code": 0,
+  "output": "\r\nuid=1000(arch) gid=1000(arch) groups=1000(arch),998(wheel)\r\n7.2.11-arch1-1\r\nactive\r\nactive\r\n  UNIT LOAD ACTIVE SUB DESCRIPTION\r\n\r\n0 loaded units listed.\r\nSESSION  UID USER SEAT LEADER CLASS   TTY IDLE SINCE\r\n      1 1000 arch -    438    user    -   no   -\r\n      2 1000 arch -    452    manager -   no   -\r\n\r\n2 sessions listed.\r\ngit 2.56.0-1\r\nlinux 7.2.11.arch1-1\r\nnetworkmanager 1.58.1-2\r\npipewire 1:1.6.9-1\r\nwireplumber 0.5.18-1\r\nHTTPS probe: HTTP/2 200\n"
+}

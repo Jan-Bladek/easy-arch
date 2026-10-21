@@ -1,0 +1,26 @@
+# Build and boot the ISO
+
+Use a disposable **Arch Linux x86_64 VM** with at least 6 GiB RAM and 30 GiB free disk space. The script modifies only its generated profile/work/output, but mkarchiso requires root mounts; keep this outside your daily desktop.
+
+```sh
+sudo pacman -Syu --needed archiso python-build python-installer python-setuptools git
+cd easy-arch
+sudo ./scripts/build-iso.sh
+```
+
+The script copies the installed official releng profile, adds Python/Qt, Openbox/LightDM, NetworkManager and disk tools, installs the project wheel into airootfs, and enables a live-only setup unit. LightDM automatically logs in `live` to Openbox; Openbox starts the installer and network/polkit agents. The normal installed system receives the selected full desktop profile instead of this live shell. Artifacts: `iso/out/easy-arch-*.iso` and `SHA256SUMS`.
+
+Existing `iso/profile` is deliberately not deleted. Move an old profile/work directory aside before a fresh build. Inspect failed work mounts (`findmnt`) before cleaning a failed root build; never recursively delete a still-mounted work tree.
+
+For auditability record `git rev-parse HEAD`, `pacman -Q archiso`, `/var/log/pacman.log`, generated profile, the package list/versions from the build and `sha256sum` of the final ISO. To reproduce exact bytes, use a frozen signed mirror snapshot, pinned archiso/toolchain and fixed `SOURCE_DATE_EPOCH`; the default rolling build only promises a repeatable procedure.
+
+```sh
+./scripts/run-vm.sh iso/out/easy-arch-YYYY.MM.DD-x86_64.iso uefi test-uefi.qcow2
+./scripts/run-vm.sh iso/out/easy-arch-YYYY.MM.DD-x86_64.iso bios test-bios.qcow2
+```
+
+After installation remove the ISO from the VM, boot the target disk and complete every verification item in [testing](testing.md). For physical USB flashing choose the destination with a trusted flashing application and verify its identity; this project does not flash host USB disks for you.
+
+The image includes a separate read-only official core/extra/multilib metadata snapshot in `/usr/share/easy-arch/catalog`. It is synchronized using the installer's isolated official repository configuration, with its own temporary pacman DB, during the build. This survives archiso's removal of `/var/lib/pacman/sync` and lets package search/dry-run work immediately without root or terminal commands. Its `snapshot-date` records freshness; real installation still checks fresh repositories before writing disks.
+
+The profile sets `cow_spacesize=75%` for x86_64 boot entries. Archiso's default 256 MiB writable overlay cannot hold the preflight package cache for a complete desktop. Use at least 6 GiB RAM for the live VM. Very large additional package selections may need more live RAM/cache space; download errors stop before partition writes.

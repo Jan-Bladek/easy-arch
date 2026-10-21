@@ -1,0 +1,18 @@
+name: Build live ISO
+on:
+  workflow_dispatch:
+jobs:
+  iso:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:base-devel
+      options: --privileged
+    steps:
+      - run: pacman -Syu --noconfirm archiso python-build python-installer python-setuptools git
+      - uses: actions/checkout@v4
+      - run: ./scripts/build-iso.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: easy-arch-iso
+          path: iso/out/*
+          retention-days: 7

@@ -1,0 +1,10 @@
+{
+  "channels": 2,
+  "sample_rate": 44100,
+  "frames": 357586,
+  "peak": 10847,
+  "rms": 4597.717576760349,
+  "strongest_test_band_hz": 440,
+  "method": "440 Hz pw-play sample -> PipeWire -> emulated Intel HDA -> QEMU WAV raw PCM; physical speakers not tested",
+  "container_note": "QEMU left RIFF length fields at zero; stats calculated from the actual captured PCM bytes"
+}

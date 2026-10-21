@@ -1,0 +1,18 @@
+[
+  {
+    "fault": "curl exited with status 7",
+    "disk_unchanged": true
+  },
+  {
+    "fault": "unavailable_package",
+    "disk_unchanged": true
+  },
+  {
+    "fault": "Selected packages and working space exceed root partition capacity",
+    "disk_unchanged": true
+  },
+  {
+    "fault": "insufficient_capacity",
+    "disk_unchanged": true
+  }
+]

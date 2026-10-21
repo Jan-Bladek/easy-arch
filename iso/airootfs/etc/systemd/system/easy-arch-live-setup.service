@@ -1,0 +1,9 @@
+[Unit]
+Description=Prepare the Easy Arch live session
+Before=display-manager.service
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/easy-arch-live-setup
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target

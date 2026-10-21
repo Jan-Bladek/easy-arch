@@ -1,0 +1,6 @@
+// Only shipped inside the disposable live image.
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.easyarch.install" && subject.user == "live" && subject.local && subject.active) {
+        return polkit.Result.YES;
+    }
+});

@@ -1,0 +1,57 @@
+{
+  "events": [
+    {
+      "time": "2026-10-21T18:59:10.575023+00:00",
+      "event": "stage",
+      "index": 1,
+      "total": 9,
+      "name": "Preflight",
+      "status": "running"
+    },
+    {
+      "time": "2026-10-21T18:59:11.956569+00:00",
+      "event": "stage",
+      "index": 1,
+      "total": 9,
+      "name": "Preflight",
+      "status": "done",
+      "seconds": 1.3749816740000824
+    },
+    {
+      "time": "2026-10-21T18:59:11.962830+00:00",
+      "event": "stage",
+      "index": 2,
+      "total": 9,
+      "name": "Repository and package transaction",
+      "status": "running"
+    },
+    {
+      "time": "2026-10-21T18:59:33.467501+00:00",
+      "event": "stage",
+      "index": 2,
+      "total": 9,
+      "name": "Repository and package transaction",
+      "status": "failed",
+      "seconds": 21.503714848000072
+    },
+    {
+      "time": "2026-10-21T18:59:33.494465+00:00",
+      "event": "error",
+      "message": "Selected packages and working space exceed root partition capacity",
+      "rollback": false
+    }
+  ],
+  "disk": {
+    "blockdevices": [
+      {
+        "name": "vda",
+        "maj:min": "254:0",
+        "rm": false,
+        "size": "20G",
+        "ro": false,
+        "type": "disk",
+        "mountpoints": []
+      }
+    ]
+  }
+}

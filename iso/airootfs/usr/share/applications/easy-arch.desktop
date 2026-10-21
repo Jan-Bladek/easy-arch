@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Easy Arch Installer
+Name[pl]=Instalator Easy Arch
+Exec=easy-arch
+Icon=system-software-install
+Categories=System;
+Terminal=false

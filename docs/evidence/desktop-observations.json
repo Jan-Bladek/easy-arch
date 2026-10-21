@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-21",
+  "method": "Password login through QEMU keyboard/SDDM; process inspection through SSH",
+  "kde_final": {
+    "kwin_wayland_pid": 505,
+    "plasmashell_pid": 512,
+    "running": true
+  },
+  "luks_kde": {
+    "kwin_wayland_pid": 648,
+    "plasmashell_pid": 655,
+    "running": true
+  },
+  "hyprland": {
+    "Hyprland": true,
+    "noctalia": true,
+    "hypridle": true,
+    "Xwayland": true,
+    "kitty_shortcut": true,
+    "thunar_shortcut": true,
+    "clipboard_round_trip": true,
+    "plasma_packages_installed": false
+  },
+  "bios_kde": {
+    "kwin_wayland": true,
+    "plasmashell": true
+  }
+}
