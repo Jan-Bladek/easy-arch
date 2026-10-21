@@ -4,7 +4,7 @@ A real Python/Qt6 installer backend and desktop wizard for Arch Linux x86_64. Th
 
 Download the bootable pre-release ISO and `SHA256SUMS` from [GitHub Releases](https://github.com/Jan-Bladek/easy-arch/releases). Repository access is required while this project is private.
 
-![Easy Arch running automatically from the built live ISO](assets/live-iso.png)
+![Easy Arch running automatically from the built live ISO](assets/live-iso-0.1.1a1.png)
 
 The wizard provides Polish/English interface text, dark/light themes, hardware detection, automatic GPT partitioning, a manual partition editor, official repository package search/groups, KDE Plasma or Hyprland + Noctalia, account configuration, services, an explicit operation plan and streamed installation logs. Installation uses `pacstrap`, `arch-chroot`, `pacman`, `sfdisk`, `cryptsetup`, `mkinitcpio` and the selected bootloader. There are no simulated install commands in the backend.
 

@@ -1,0 +1,46 @@
+{
+  "tested_at_utc": "2026-10-21T20:12:33.679494+00:00",
+  "release": "v0.1.1-alpha.1",
+  "application_version": "0.1.1a1",
+  "image": "easy-arch-0.1.1a1-x86_64.iso",
+  "bytes": 1997520896,
+  "sha256": "407f6e3b408957edda134fbbca2ff8b78b2bedccfd6a6c61010365a681f2908b",
+  "checksum_matches_builder_and_local_file": true,
+  "application_source_commit": "6748c54754411c4b962add72828583535331937b",
+  "build_method": "Fresh scripts/build-iso.sh run from a Git bundle clone in a disposable Arch VM; previous generated profile/work/output removed after checking that they were not mounted.",
+  "archiso": "91-1",
+  "qemu": "11.1.2",
+  "image_inspection": {
+    "build_info_version": "0.1.1a1",
+    "build_info_source_matches": true,
+    "entrypoint_mode": "0755",
+    "checked_module_sha256": {
+      "installation/unmount.py": "035f1132453633e5376ec28c5022c9a04130458e13bf271c4fc94dad5385442d",
+      "installation/engine.py": "6c3f5223eba038083d46baac1626cabbfe985b5ed4e6831ace619cb820b57c02",
+      "installation/runner.py": "cb133f51290ddf4c7f1eb8660e02306a6c3cf4c8d14203b53f6568dab3cf9e65",
+      "main.py": "af53413af0c91cfce3be411c82dbe9a9716d9aa69fa17c30d9259c9a2a7c1f35",
+      "gui/wizard.py": "ef7603c9a7c441d12846bcaa70c33944509e03c72150b52c3c930b70f3cf4ae7"
+    },
+    "all_checked_modules_match_source": true
+  },
+  "boot": {
+    "result": "PASS",
+    "firmware": "OVMF UEFI without Secure Boot",
+    "machine": "q35 / TCG / cpu max / 4 vCPUs / 6 GiB RAM",
+    "target": "Separate empty 20 GiB qcow2, serial EASYARCH-0.1.1A1",
+    "automatic_live_login": true,
+    "automatic_gui_start": true,
+    "manual_fixes_on_test_boot": false,
+    "version_displayed_in_gui": "0.1.1a1",
+    "detected_disks": 1,
+    "displayed_official_packages": 15521,
+    "screenshot": "assets/live-iso-0.1.1a1.png"
+  },
+  "tests": {
+    "automated": 59,
+    "github_actions_for_source": "success",
+    "busy_unmount_vm_evidence": "docs/evidence/busy-unmount.json",
+    "four_full_installation_scenarios_rerun_for_this_release": false
+  },
+  "scope": "Fresh image build, embedded source verification and live GUI/hardware/catalog smoke test. Previous full installation matrix is historical. The original user busy-mount holder remains unknown; this release improves diagnostics and working-directory handling, without forcing unmount or killing holders."
+}

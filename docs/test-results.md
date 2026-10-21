@@ -25,6 +25,7 @@ Executed on **2026-10-21**, using real Arch repository packages. These results q
 | GUI → Polkit helper → root backend | PASS: typed serial, credential pipe, visible capacity failure, disk still blank | [Actual stage/error and lsblk](evidence/gui-helper-capacity.json); initial live image with session/mode fixes applied in RAM |
 | Live ISO build and fresh UEFI boot | PASS: automatic live login and installer startup, disk/catalog detection | [Image checksum and exact scope](evidence/iso-verification.json), [screenshot](../assets/live-iso.png) |
 | Busy final unmount diagnostics | PASS: real busy tmpfs mount, holder PID reported, holder left running; normal unmount after holder exits | [QEMU evidence](evidence/busy-unmount.json); controlled reproduction, original user blocker unknown; source update after alpha.1 |
+| Fresh 0.1.1a1 ISO build and UEFI boot | PASS: versioned GUI autostart, disk detection, 15,521 package records; five embedded source modules match Git | [Release evidence](evidence/iso-0.1.1a1.json), [package versions](evidence/iso-0.1.1a1-packages.txt), [screenshot](../assets/live-iso-0.1.1a1.png); full install matrix not repeated |
 | Physical installation, Wi-Fi/Bluetooth, microphones, NVIDIA, HiDPI/multi-monitor | NOT EXECUTED | No pass is claimed |
 | XFS, PBKDF2, other kernels, BIOS encryption, UEFI GRUB, Secure Boot | NOT QUALIFIED by these VM runs | Some paths implemented; Secure Boot explicitly blocked |
 
